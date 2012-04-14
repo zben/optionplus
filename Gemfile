@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 gem 'pg'
+gem 'haml','~>3.1.4'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -25,7 +26,6 @@ group :development, :test do
   gem 'spork', '~>0.9.0'
   gem 'rspec-rails', '~>2.8.1'
   gem 'ruby-debug19'
-  gem 'haml','~>3.1.4'
   gem 'jasminerice', '~>0.0.8'
   gem 'sqlite3'
 end
