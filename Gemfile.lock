@@ -110,6 +110,7 @@ GEM
     mime-types (1.18)
     multi_json (1.2.0)
     nokogiri (1.5.2)
+    pg (0.13.1)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -205,6 +206,7 @@ DEPENDENCIES
   jasminerice (~> 0.0.8)
   jquery-rails
   launchy
+  pg
   rails (= 3.2.3)
   rspec-rails (~> 2.8.1)
   ruby-debug19
