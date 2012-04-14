@@ -2,7 +2,7 @@ class DataRetriever < ActiveRecord::Base
   def self.get_price ticker
     require 'csv'
     require 'open-uri'
-    quote = CSV.new(open("http://finance.yahoo.com/d/quotes.csv?s=#{ticker.upcase}&f=kl")).first.first
+    quote = CSV.new(open("http://finance.yahoo.com/d/quotes.csv?s=#{ticker.upcase}&f=l1")).first.first
     quote = "quote unavailable" if quote == "N/A"
     "$"+quote
   rescue
