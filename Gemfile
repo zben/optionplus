@@ -5,7 +5,6 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 
 
 # Gems used only for assets and not required
@@ -28,6 +27,7 @@ group :development, :test do
   gem 'ruby-debug19'
   gem 'haml','~>3.1.4'
   gem 'jasminerice', '~>0.0.8'
+  gem 'sqlite3'
 end
 
 group :test do
