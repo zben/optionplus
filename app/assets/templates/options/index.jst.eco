@@ -5,4 +5,4 @@
 <input type="submit" name="Submit" value="Get price" />
 <h2 id="price"></h2>
 </form>
-<img src="" id="chart" />
+<img src="/get_image" id="chart" />

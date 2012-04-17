@@ -14,7 +14,8 @@ class Optionplus.Views.OptionsIndex extends Backbone.View
   getQuote: (event) =>
     event.preventDefault()
     ticker = $('#ticker').val()
-    $.get "/get_price/"+ticker,(data) ->
-      $("#price").text(data['quote'])
-      $("img#chart").attr("src", "data:image/png;base64,"+data['image'])
-      
+    if ticker.length!=0 
+      $.get "/get_price/"+ticker,(data) ->
+        $("img#chart").attr("src", "get_image/"+ticker)
+        $("#price").text(data)
+    
