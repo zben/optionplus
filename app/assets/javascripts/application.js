@@ -22,6 +22,4 @@
 //= require_tree ./routers
 //= require_tree .
 
-$(document).ready(function(){ 
-  Optionplus.init();
-});
+

@@ -4,7 +4,8 @@ window.Optionplus =
   Views: {}
   Routers: {}
   init: ->
-    new Optionplus.Routers.Optionplus
+    new Optionplus.Routers.OptionplusRoute
     Backbone.history.start()
 
-
+$(document).ready -> 
+  Optionplus.init()

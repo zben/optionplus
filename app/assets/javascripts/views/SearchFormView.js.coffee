@@ -5,10 +5,9 @@ class Optionplus.Views.SearchFormView extends Backbone.View
   initialize: ->
 
   events:
-    'change input#ticker': 'updateStockChart'
-    'change input.option_config': 'updateOptionChart'
-    'change input.chart_config': 'updateAllCharts'
-
+    'keyup input[name="ticker"]': 'updateSearch'
+    'change .config input':'updateSearch'
+  
   render: ->
     $(@el).html(@template)
     this
@@ -21,15 +20,9 @@ class Optionplus.Views.SearchFormView extends Backbone.View
         $("img#chart").attr("src", "get_image/"+ticker)
       #  $("#price").text(data)
 
-  updateStockChart: ->
-    stockChartView.trigger('updateStockChart')
-
-  updateOptionChart: ->
-    optionChartView.trigger('updateOptionChart')
-
-  updateAllCharts: ->
-    stockChartView.trigger('updateStockChart')
-    optionChartView.trigger('updateOptionChart')
-
-
+  updateSearch: (input) =>
+    console.log(input.target.name)
+    console.log(input.target.value)
+    @model.set(input.target.name,input.target.value)
+    console.log(@model)
 

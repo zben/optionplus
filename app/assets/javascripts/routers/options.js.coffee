@@ -1,26 +1,28 @@
-class Optionplus.Routers.Optionplus extends Backbone.Router
+class Optionplus.Routers.OptionplusRoute extends Backbone.Router
   routes:
     '': 'index'
     ':symbol':'show'
 
   initialize: ->
-    search = new Optionplus.Models.Search
-    form_view = new Optionplus.Views.SearchFormView
+    @search = new Optionplus.Models.Search
+    form_view = new Optionplus.Views.SearchFormView({model: @search})
     $("#search_form").html(form_view.render().el)
 
-    stock_chart_view = new Optionplus.Views.StockChartView
-    $("#stock_chart").html(stock_chart_view.render().el)
+    stockChartView = new Optionplus.Views.StockChartView({model: @search})
+    $("#stock_chart").html(stockChartView.render().el)
 
-    option_chart_view = new Optionplus.Views.OptionChartView
-    $("#option_chart").html(option_chart_view.render().el)
+    optionChartView = new Optionplus.Views.OptionChartView({model: @search})
+    $("#option_chart").html(optionChartView.render().el)
 
+    watchlistCollectionView = new Optionplus.Views.WatchlistCollectionView
+    $("#watchlist").html(watchlistCollectionView.render().el)
 
   index: ->
-    search.set('id','SPY')
-    search.fetch();
+    @search.set('id','SPY')
+    @search.fetch();
 
   show: (symbol) =>
-    search.set('id',symbol)
-    search.fetch();
+    @search.set('id',symbol)
+    @search.fetch();
 
 

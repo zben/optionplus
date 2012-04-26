@@ -3,26 +3,27 @@
     <label>Ticker</label> 
     <input type="text_field" name="ticker" id="ticker" autocomplete="off"/>
 
+    <div class="config">
 
-    <label>Call/Put</label>
-    <input type="radio" name="option_type" value="call">Call
-    <input type="radio" name="option_type" value="put">Put
+      <label>Call/Put</label>
+      <input type="radio" name="option_type" value="call">Call
+      <input type="radio" name="option_type" value="put">Put
 
-    <label>Strike Price</label>
-    <input type="text_field" name="strike">
+      <label>Strike Price</label>
+      <input type="text_field" name="strike">
 
-    <label>Expiration Date</label>
-    <input type="text_field" name="expiration">
+      <label>Expiration Date</label>
+      <input type="text_field" name="expiration">
 
-    <label>Display Period</label>
-    <input type="radio" name="period" value="1d">1d
-    <input type="radio" name="period" value="2d">1d
-    <input type="radio" name="period" value="5d">5d
-    <input type="radio" name="period" value="10d">10d
-    <input type="radio" name="period" value="1m">1m
-    <input type="radio" name="period" value="3m">3m
-    <input type="radio" name="period" value="6m">6m
-
+      <label>Display Period</label>
+      <input type="radio" name="period" value="1d">1d
+      <input type="radio" name="period" value="2d">1d
+      <input type="radio" name="period" value="5d">5d
+      <input type="radio" name="period" value="10d">10d
+      <input type="radio" name="period" value="1m">1m
+      <input type="radio" name="period" value="3m">3m
+      <input type="radio" name="period" value="6m">6m
+   </div>
 
   </form>
 

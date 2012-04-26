@@ -1,4 +1,4 @@
-  <h2 id="symbol"></h2>
+  <h2 id="symbol"><%= @symbol %></h2>
   <h3 id="company_name"></h3>
   <h4 id="last"></h4>
   <h4 id="change"></h4>
