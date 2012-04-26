@@ -20,8 +20,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "mongoid", "~> 2.4"
+gem "bson_ext", "~> 1.5"
+gem "devise"
+gem "stock_quote"
 gem 'jquery-rails'
-
+gem 'rabl'
 group :development, :test do
   gem 'spork', '~>0.9.0'
   gem 'rspec-rails', '~>2.8.1'

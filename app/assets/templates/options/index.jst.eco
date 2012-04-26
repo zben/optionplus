@@ -1,8 +1,0 @@
-<h1>OptionPlus</h1>
-
-<form>
-<input type="text_field" name="ticker" id="ticker" autocomplete="off"/>
-<input type="submit" name="Submit" value="Get price" />
-<h2 id="price"></h2>
-</form>
-<img src="/get_image" id="chart" />
