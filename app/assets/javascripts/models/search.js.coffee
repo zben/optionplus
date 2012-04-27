@@ -6,18 +6,15 @@ class Optionplus.Models.Search extends Backbone.Model
     'industry':{name: 'undefined'}
     'period': '2d'
     'option_type': 'C'
-  
+    'expirations': {}
+
+
   initialize: ->
     #@on('change:id', @getData)
     #@on('change:strike change:expiration change:period', @updateOptionString)
     #@on('change:period', @updateAllStrings)
 
-  setForm: ->
-    console.log('hello')
-    @updateAllStrings()    
-    @fetch()
-    window.search = @
- 
+
   updateAllStrings: ->
     @updateExpiration()
     @updateStrike()

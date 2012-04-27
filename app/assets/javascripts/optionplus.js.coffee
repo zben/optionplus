@@ -3,9 +3,6 @@ window.Optionplus =
   Collections: {}
   Views: {}
   Routers: {}
-  init: ->
-    new Optionplus.Routers.OptionplusRoute
+  init: (options) ->
+    new Optionplus.Routers.OptionplusRoute(options)
     Backbone.history.start()
-
-$(document).ready -> 
-  Optionplus.init()

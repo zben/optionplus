@@ -1,1 +1,6 @@
 #main.container
+
+:javascript
+  $(document).ready(function() {
+    Optionplus.init({ expirations: #{@expirations.to_json} });
+  });

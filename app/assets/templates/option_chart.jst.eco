@@ -1,9 +1,10 @@
 <div class="span1">
-  <h1 id="option_type"><%=if @model.get('option_type')=="C" then "Call" else "Put"%></h1>
+  <h1 id="option_type"><%=if @model.get('option_type')=="C" then "CALL" else "PUT"%></h1>
 </div>
 <div class="span4">
   <h3 id="expiration"> <%= @model.get('expiration').text()%> </h3>
-  <span id="days_to_expire"> 10 trading days until expiration </span>
+  <% value = @model.get('expiration').val() %>
+  <span id="days_to_expire"> <%= @model.get('expirations')[value] %> trading days until expiration </span>
 </div>
 
 <div class="span2 align-right">
@@ -15,10 +16,7 @@
  <img src="<%= @model.get('option_chart_url') %>" id="chart" />
 </div>
 
-<input class="span6" id="strike_price_slider" type="range" min="0" max="50" value="0" step="1" onchange="showValue(this.value)" />
-<span id="range" class="span1">0</span>
 
-</div>
 
 
 

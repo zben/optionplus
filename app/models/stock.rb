@@ -33,6 +33,21 @@ class Stock
     strike_form_value(default_strike_price)
   end
 
+  def self.expirations
+    expirations={}
+    expirations[Chronic.parse("last week Friday")] = "weekly"
+    expirations[Chronic.parse("this week Friday")] = "weekly"
+    expirations[Chronic.parse("next week Friday")] = "weekly"
+    last_month= Chronic.parse("3rd Friday last month")
+    5.times do
+      last_month = Chronic.parse("3rd Friday next month",now: last_month)
+      expirations[last_month] = "monthly"
+    end
+    expirations.map do |date, type|
+      Expiration.new(date, type)
+    end
+  end
+
   private
 
   def interval

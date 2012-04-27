@@ -1,4 +1,4 @@
- <h1>Form</h1>
+ <h1>OptionPlus</h1>
   <form>
     <label>Ticker</label> 
     <input type="text_field" name="id" id="ticker" autocomplete="off" value=<%=@model.id%> />
@@ -17,41 +17,18 @@
       </select>
       <label>Expiration Date</label>
       <select type="select" name="expiration">
-        <option value="120519">May 19, 2012</option>
-        <option value="120616">June 16, 2012</option>
+        <% for expiration, index in @expirations.models: %>
+          <option value="<%= expiration.get('url_fragment') %>" > <%= expiration.get('display') %></option>
+        <% end %>
       </select>
-
       <label>Display Period</label>
       <% for period in ['1d','2d','5d','10d','1m','3m','6m','1y']: %>
-        <input type="radio" name="period" value="<%=period%>" 
-        <%= "checked" if period==@model.get('period') %> > <%= period %>
+        <li class="period">
+          <input type="radio" name="period" value="<%=period%>" 
+            <%= "checked" if period==@model.get('period') %> 
+          > 
+          <%= period %>
+        </li>
       <% end %>
    </div>
-
   </form>
-<script type="text/javascript">
-$(document).keydown(function(e){
-    var selector = $('#strike_price_slider');
-
-    if (e.keyCode == 37) { 
-
-$('option:selected', 'select[name="strike"]').removeAttr('selected').prev('option').attr('selected', 'selected').change();
-
-
-       selector.attr('value', parseInt(selector.val())-1);
-       selector.change();
-       return false;
-    }
-    else if (e.keyCode ==39 ){
-$('option:selected', 'select[name="strike"]').removeAttr('selected').next('option').attr('selected', 'selected').change();
-       selector.attr('value', parseInt(selector.val())+1);
-       selector.change();       
-       return false;
-    }
-});
-
-function showValue(newValue)
-{
-	document.getElementById("range").innerHTML=newValue;
-}
-</script>

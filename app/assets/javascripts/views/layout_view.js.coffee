@@ -2,23 +2,22 @@ class Optionplus.Views.LayoutView extends Backbone.View
   template: JST['layout']
 
   initialize: ->
+    @expirations = @options.expirations
 
   render: ->
-    @model.fetch
-      success: (model, response) =>
-        @model.trigger('refreshForm')
-
+    
     @_renderLayout()
     @_renderSearchForm()
     @_renderStockChart()
     @_renderOptionChart()
     @
 
+
   _renderLayout: ->
     $(@el).html(@template)
 
   _renderSearchForm: ->
-    search_form = new Optionplus.Views.SearchFormView({model: @model})
+    search_form = new Optionplus.Views.SearchFormView({model: @model, expirations: @expirations})
     @.$('#search_form').html(search_form.render().el)
 
   _renderStockChart: ->

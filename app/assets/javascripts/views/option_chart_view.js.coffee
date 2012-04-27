@@ -3,10 +3,10 @@ class Optionplus.Views.OptionChartView extends Backbone.View
   template: JST['option_chart']
 
   initialize: ->
-    @model.on('refreshChart refreshForm', @render, @)
+    @model.on('refreshOptionChart refreshForm', @render, @)
 
   render: ->
     @model.updateAllStrings()
-    window.search = @model
+    console.log('rendering option chart',@model)
     $(@el).html(@template({model: @model}))
     @

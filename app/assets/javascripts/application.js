@@ -22,4 +22,69 @@
 //= require_tree ./routers
 //= require_tree .
 
+$(document).keydown(function(e){
+    if (e.keyCode == 37) { 
+       $('option:selected', 'select[name="strike"]').removeAttr('selected').prev('option')
+       .attr('selected', 'selected').change();
+       return false;
+    }
+    else if (e.keyCode ==39 ){
+       $('option:selected', 'select[name="strike"]').removeAttr('selected').next('option')
+       .attr('selected', 'selected').change();
+       return false;
+    }
+
+    else if (e.keyCode ==38 ){
+       $('option:selected', 'select[name="expiration"]').removeAttr('selected').next('option')
+       .attr('selected', 'selected').change();
+       return false;
+    }
+
+    else if (e.keyCode ==40 ){
+       $('option:selected', 'select[name="expiration"]').removeAttr('selected').prev('option')
+       .attr('selected', 'selected').change();
+       return false;
+    }
+
+    else if (e.keyCode ==13 ){ //enter
+       $('input[name="id"]').blur();
+       return false;
+    }
+    else if (e.keyCode ==33 ){ //page up
+       var selected = $('input[name="period"]:checked');
+       var prev = selected.parent().prev('li').find('input');
+       if(prev.length == 1){
+         selected.removeAttr('checked');
+         prev.attr('checked','checked').change();
+       }
+       return false;
+    }
+    else if (e.keyCode ==34 ){ //page down
+       var selected = $('input[name="period"]:checked');
+       var next = selected.parent().next('li').find('input');
+       if(next.length == 1){
+         selected.removeAttr('checked');
+         next.attr('checked','checked').change();
+       }
+       return false;
+    }
+    else if (e.keyCode ==32 ){ //space
+      var selected = $('input[name="option_type"]:checked');
+      var next = selected.next('input');
+      var prev = selected.prev('input');
+      if(next.length == 1){
+        selected.removeAttr('checked');
+        next.attr('checked','checked').change();
+      }
+      else{
+        selected.removeAttr('checked');
+        prev.attr('checked','checked').change();
+      }
+       return false;
+    }
+
+
+
+});
+
 

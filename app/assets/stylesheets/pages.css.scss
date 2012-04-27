@@ -63,3 +63,26 @@ label{
     padding-left:20px;
   }
 }
+
+li.period{
+  list-style:none;
+  display:inline-block;
+  width:60px;
+}
+
+label{
+  background-color:#4E72D9;
+  color:white;
+  border-radius:5px;
+  padding:5px;
+}
+
+form{
+  width:80%;
+}
+select{
+  width:100%;
+}
+input[type="text_field"]{
+  width:100%;
+}
