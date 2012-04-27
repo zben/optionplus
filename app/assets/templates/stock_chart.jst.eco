@@ -1,8 +1,22 @@
-  <h2 id="symbol"><%= @symbol %></h2>
-  <h3 id="company_name"></h3>
-  <h4 id="last"></h4>
-  <h4 id="change"></h4>
-  <h4 id="perc_change"></h4>
-  <img src="/get_image/SPY" id="chart" />
+  <div class="span1">
+    <h1 id="symbol"><%= @model.get('id') %></h1>
+  </div>
+  <div class="span4">
+    <h3 id="company_name" >
+      <%= @model.get('company_name')%>
+    </h3>
+    <span id="industry"><%= @industry %></span>
+  </div>
+<div class="span2 align-right">
+  <h4 id="last">
+    $<%= @model.get('price')%>
+  </h4>
 
+  <span id="change" class="<%= if @model.get('change')>0 then "up_arrow" else "down_arrow"%>">
+    $<%= @model.get('change')%> (<%= @model.get('perc_change')%>%)
+  </span>
+</div>
 
+<div class="chart span7">
+  <img src="<%= @model.get('stock_chart_url')%>" id="chart" />
+</div>

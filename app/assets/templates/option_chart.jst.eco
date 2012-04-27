@@ -1,37 +1,25 @@
-  <h1>Option Chart</h1>
-  <h2 id="symbol"></h2>
-  <h3 id="strike"></h3>
-  <h4 id="expiration"></h4>
-  <h4 id="price"></h4>
-  <h4 id="perc_change"></h4>
-  <img src="/get_image/SPY" id="chart" />
+<div class="span1">
+  <h1 id="option_type"><%=if @model.get('option_type')=="C" then "Call" else "Put"%></h1>
+</div>
+<div class="span4">
+  <h3 id="expiration"> <%= @model.get('expiration').text()%> </h3>
+  <span id="days_to_expire"> 10 trading days until expiration </span>
+</div>
 
+<div class="span2 align-right">
+  <h3 id="strike"><%= if typeof(@model.get('strike'))=="undefined" then "--" else @model.get('strike').text()%></h3>
+  <span id="strike_note">strike price ( % diff.)</span>
+</div>
 
-<input id="strike_price_slider" type="range" min="0" max="50" value="0" step="1" onchange="showValue(this.value)" />
-<span id="range">0</span>
+<div class="chart span7">  
+ <img src="<%= @model.get('option_chart_url') %>" id="chart" />
+</div>
+
+<input class="span6" id="strike_price_slider" type="range" min="0" max="50" value="0" step="1" onchange="showValue(this.value)" />
+<span id="range" class="span1">0</span>
 
 </div>
 
 
 
-<script type="text/javascript">
-$(document).keydown(function(e){
-    var selector = $('#strike_price_slider');
 
-    if (e.keyCode == 37) { 
-       selector.attr('value', parseInt(selector.val())-1);
-       selector.change();
-       return false;
-    }
-    else if (e.keyCode ==39 ){
-       selector.attr('value', parseInt(selector.val())+1);
-       selector.change();       
-       return false;
-    }
-});
-
-function showValue(newValue)
-{
-	document.getElementById("range").innerHTML=newValue;
-}
-</script>

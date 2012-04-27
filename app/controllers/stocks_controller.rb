@@ -1,5 +1,5 @@
 class StocksController < ApplicationController
   def show
-    @stock = Stock.where(symbol: params[:symbol]).first
+    @stock = Stock.find_or_initialize_by(symbol: params[:symbol].upcase)
   end
 end

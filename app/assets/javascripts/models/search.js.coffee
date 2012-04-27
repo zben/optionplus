@@ -1,33 +1,50 @@
 class Optionplus.Models.Search extends Backbone.Model 
-  urlRoot: '/stocks' 
+  urlRoot: '/stocks'
 
+  defaults:
+    'id': 'SPY'
+    'industry':{name: 'undefined'}
+    'period': '2d'
+    'option_type': 'C'
+  
   initialize: ->
-    @on('change:ticker',@getData)
-    @on('change:strike change:expiration change:period', @updateOptionString)
-    @on('change:period', @updateAllStrings)
+    #@on('change:id', @getData)
+    #@on('change:strike change:expiration change:period', @updateOptionString)
+    #@on('change:period', @updateAllStrings)
 
-  getData: ->
+  setForm: ->
+    console.log('hello')
+    @updateAllStrings()    
     @fetch()
-
+    window.search = @
+ 
   updateAllStrings: ->
-    console.log(@)
-    @set('stock_chart_string',stock_chart_url)
-    @set('option_chart_url',option_chart_url)
+    @updateExpiration()
+    @updateStrike()
+    @set('stock_chart_url', "/stock_chart/#{@get('id')}/#{@get('period')}")
+    @set('option_chart_url', "option_chart/#{@get('id')}/#{@get('option_type')}/#{@get('period')}/#{@get('strike').val()}/#{@get('expiration').val()}")
 
   updateOptionString: ->
-    @set('stock_chart_string',stock_chart_url())
+    @updateExpiration()
+    @updateStrike()
+    @set('stock_chart_url', "/stock_chart/#{@get('id')}/#{@get('period')}")
+    @set('option_chart_url', "option_chart/#{@get('id')}/#{@get('option_type')}/#{@get('period')}/#{@get('strike').val()}/#{@get('expiration').val()}")
 
-  stock_chart_url: ->
-    "/stock_chart/#{@symbol}/#{period}"
-  
-  option_chart_url: ->
-    "option_chart/#{@symbol}/#{period}/#{strike}/#{expiration}"
 
-  period: ->
-    @model.set('period', $('input[name="period"]').val()).get('period')
+  _stock_chart_url: ->
+    "/stock_chart/#{@symbol}/#{@period}"
 
-  expiration: ->
-    @model.set('expiration', $('input[name="expiration"]').val()).get('expiration')
+  _option_chart_url: ->
+    "option_chart/#{@symbol}/#{@period}/#{@strike}/#{@expiration}"
 
-  strike: ->
-    @model.set('strike', $('input[name="strike"]').val()).get('strike')
+  updatePeriod: ->
+    @set('period', $('input[name="period"]:checked').val())
+
+  updateExpiration: ->
+    @set('expiration', $('select[name="expiration"] option:selected'))
+
+  updateStrike: ->
+    @set('strike', $('select[name="strike"] option:selected'))
+
+  updateOptionType: ->
+    @set('option_type', $('input[name="option_type"]:checked').val())

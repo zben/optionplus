@@ -6,4 +6,5 @@ attributes :_id,
            :perc_change, 
            :industry, 
            :price, 
-           :strike_prices
+           :strike_prices,
+           :default_strike_price_string

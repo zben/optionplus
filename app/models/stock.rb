@@ -21,11 +21,16 @@ class Stock
 
 
   def strike_prices
-    (-10..10).map{ |distance| default_strike_price + distance * interval }
+    prices = (-10..10).map{ |distance| default_strike_price + distance * interval }
+    prices.map{|price| [strike_form_value(price), displayed_string(price)]}
   end
 
   def default_strike_price
     price.divmod(interval)[0]*interval
+  end
+
+  def default_strike_price_string
+    strike_form_value(default_strike_price)
   end
 
   private
@@ -42,6 +47,14 @@ class Stock
 
   def google_data
     @data ||= StockQuote::Stock.quote(symbol)
+  end
+
+  def strike_form_value strike
+    (strike*1000).to_i.to_s.rjust(8,"0")
+  end
+
+  def displayed_string strike
+     "$#{strike.to_s.ljust(14," ")} ( #{"%5.1f%" % (strike*100/price-100)} ) "
   end
 end
 

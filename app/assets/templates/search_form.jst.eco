@@ -1,29 +1,57 @@
  <h1>Form</h1>
   <form>
     <label>Ticker</label> 
-    <input type="text_field" name="ticker" id="ticker" autocomplete="off"/>
+    <input type="text_field" name="id" id="ticker" autocomplete="off" value=<%=@model.id%> />
 
     <div class="config">
 
       <label>Call/Put</label>
-      <input type="radio" name="option_type" value="call">Call
-      <input type="radio" name="option_type" value="put">Put
+      <input type="radio" name="option_type" value="C" <%= "checked" if @model.get('option_type')=="C" %> > Call
+      <input type="radio" name="option_type" value="P" <%= "checked" if @model.get('option_type')=="P" %> > Put
 
       <label>Strike Price</label>
-      <input type="text_field" name="strike">
-
+      <select type="select" name="strike"> 
+        <% for strike in @strike_prices: %>
+          <option value="<%=strike[0]%>" <%="selected" if strike[0]==@model.get('default_strike_price_string')%>> <%=strike[1]%> </option>
+        <% end %>
+      </select>
       <label>Expiration Date</label>
-      <input type="text_field" name="expiration">
+      <select type="select" name="expiration">
+        <option value="120519">May 19, 2012</option>
+        <option value="120616">June 16, 2012</option>
+      </select>
 
       <label>Display Period</label>
-      <input type="radio" name="period" value="1d">1d
-      <input type="radio" name="period" value="2d">1d
-      <input type="radio" name="period" value="5d">5d
-      <input type="radio" name="period" value="10d">10d
-      <input type="radio" name="period" value="1m">1m
-      <input type="radio" name="period" value="3m">3m
-      <input type="radio" name="period" value="6m">6m
+      <% for period in ['1d','2d','5d','10d','1m','3m','6m','1y']: %>
+        <input type="radio" name="period" value="<%=period%>" 
+        <%= "checked" if period==@model.get('period') %> > <%= period %>
+      <% end %>
    </div>
 
   </form>
+<script type="text/javascript">
+$(document).keydown(function(e){
+    var selector = $('#strike_price_slider');
 
+    if (e.keyCode == 37) { 
+
+$('option:selected', 'select[name="strike"]').removeAttr('selected').prev('option').attr('selected', 'selected').change();
+
+
+       selector.attr('value', parseInt(selector.val())-1);
+       selector.change();
+       return false;
+    }
+    else if (e.keyCode ==39 ){
+$('option:selected', 'select[name="strike"]').removeAttr('selected').next('option').attr('selected', 'selected').change();
+       selector.attr('value', parseInt(selector.val())+1);
+       selector.change();       
+       return false;
+    }
+});
+
+function showValue(newValue)
+{
+	document.getElementById("range").innerHTML=newValue;
+}
+</script>

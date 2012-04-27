@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body{
+  font-family: 'arial'
+}
 #vertical_slider{
   -webkit-appearance: slider-vertical;
   -moz-transform: rotate(90deg);
@@ -13,4 +16,50 @@ label{
   display:block;
   width:100%;
   margin-top:10px;
+}
+
+.chart{
+  height: 300px;
+  background:url('spinner.gif') no-repeat center
+}
+#stock_chart, #option_chart{
+
+  h1,h2,h3,h4,h5{
+    margin:0px;
+    padding:0px;
+  }
+  #last{
+    font-size:20px;
+    color:green;
+  }
+  #change{
+    font-size:16px;
+    padding-left:18px;
+  }
+  .up_arrow{
+    background: url('up_arrow.png') no-repeat left;
+    color:green;
+  }
+  .down_arrow{
+    background: url('down_arrow.png') no-repeat left;
+    color:red;
+  }
+  .align-right{
+    text-align:right;
+  }
+  #industry, #days_to_expire, #strike_note{
+    font-size:14px;
+    color: grey;
+  }
+  #company_name, #expiration, #strike{
+    color: brown;
+  }
+
+  #symbol, #option_type{
+    color: #4E72D9;
+    font-size: 36px;
+  }
+  #company_name, #industry{
+    padding-left:20px;
+  }
 }

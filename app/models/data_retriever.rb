@@ -10,7 +10,7 @@ class DataRetriever < ActiveRecord::Base
   end
 
   def self.get_image ticker
-    url="http://app.quotemedia.com/quotetools/getChart?webmasterId=500&snap=true&symbol=#{ticker.upcase}&chscale=1d&chtype=AreaChart&chwid=277&chhig=295&chpccol=ff0000&chfrmon=false&chton=false&chpcon=true"
+    url=":http://app.quotemedia.com/quotetools/getChart?webmasterId=500&snap=true&symbol=#{ticker.upcase}&chscale=1d&chtype=AreaChart&chwid=277&chhig=295&chpccol=ff0000&chfrmon=false&chton=false&chpcon=true"
     ActiveSupport::Base64.encode64(open(url) { |io| io.read })
   end
 end
