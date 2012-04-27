@@ -1,0 +1,13 @@
+<div class="row-fluid">
+  <div id="search_form" class="span3">
+    Form
+  </div>
+  <div class="span7">
+    <div id="stock_chart" class="row">
+      Stock Chart Here!
+    </div>
+    <div id="option_chart" class="row">
+      Option Chart Here!
+    </div>
+  </div>
+</div>
