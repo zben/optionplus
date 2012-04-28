@@ -70,8 +70,8 @@ $(document).keydown(function(e){
     }
     else if (e.keyCode ==32 ){ //space
       var selected = $('input[name="option_type"]:checked');
-      var next = selected.next('input');
-      var prev = selected.prev('input');
+      var next = selected.parent().next('label').find('input');
+      var prev = selected.parent().prev('label').find('input');
       if(next.length == 1){
         selected.removeAttr('checked');
         next.attr('checked','checked').change();
