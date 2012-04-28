@@ -38,6 +38,7 @@ class Optionplus.Models.Search extends Backbone.Model
     @set('period', $('input[name="period"]:checked').val())
 
   updateExpiration: ->
+    
     @set('expiration', $('select[name="expiration"] option:selected'))
 
   updateStrike: ->

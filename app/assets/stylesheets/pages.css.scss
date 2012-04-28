@@ -70,7 +70,7 @@ li.period{
   width:60px;
 }
 
-label{
+label.form_label{
   background-color:#4E72D9;
   color:white;
   border-radius:5px;
@@ -86,3 +86,38 @@ select{
 input[type="text_field"]{
   width:100%;
 }
+
+
+#bounds {
+    margin:4px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+   
+    width: 100%;
+    margin: 0px auto;
+}
+
+#bounds label {
+    float:left;
+    width:50%;
+    margin: 0px;
+}
+
+#bounds label span {
+    text-align:center;
+    padding:3px 0px;
+    display:block;
+}
+
+#bounds label input {
+    position:absolute;
+    top:-20px;
+}
+
+#bounds input:checked + span {
+    background-color:red;
+    color:white;
+}
+

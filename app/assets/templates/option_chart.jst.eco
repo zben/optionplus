@@ -2,9 +2,8 @@
   <h1 id="option_type"><%=if @model.get('option_type')=="C" then "CALL" else "PUT"%></h1>
 </div>
 <div class="span4">
-  <h3 id="expiration"> <%= @model.get('expiration').text()%> </h3>
-  <% value = @model.get('expiration').val() %>
-  <span id="days_to_expire"> <%= @model.get('expirations')[value] %> trading days until expiration </span>
+  <h3 id="expiration"> <%= @expiration.get('display') %></h3>
+  <span id="days_to_expire"> <%= @expiration.get('days_left') %>  </span>
 </div>
 
 <div class="span2 align-right">

@@ -10,7 +10,6 @@ class Optionplus.Routers.OptionplusRoute extends Backbone.Router
     expirations = new Optionplus.Collections.ExpirationCollection(@expirations)
     layout_view = new Optionplus.Views.LayoutView({model: search, expirations: expirations})
     $('#main').html(layout_view.render().el)
-    search.set('expirations', @expirations)
     search.fetch
       success: (model, response) ->
-        search.trigger('refreshForm')
+        search.trigger('initializeViews')

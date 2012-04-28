@@ -3,19 +3,17 @@ class Optionplus.Views.LayoutView extends Backbone.View
 
   initialize: ->
     @expirations = @options.expirations
+    @model.on('initializeViews', @renderSubViews, @)
 
-  render: ->
-    
-    @_renderLayout()
+  renderSubViews: =>
     @_renderSearchForm()
     @_renderStockChart()
     @_renderOptionChart()
-    @
 
 
-  _renderLayout: ->
+  render: ->
     $(@el).html(@template)
-
+    @
   _renderSearchForm: ->
     search_form = new Optionplus.Views.SearchFormView({model: @model, expirations: @expirations})
     @.$('#search_form').html(search_form.render().el)
@@ -25,5 +23,5 @@ class Optionplus.Views.LayoutView extends Backbone.View
     @.$('#stock_chart').html(stock_chart.render().el)
 
   _renderOptionChart: ->
-    option_chart = new Optionplus.Views.OptionChartView({model: @model})
+    option_chart = new Optionplus.Views.OptionChartView({model: @model, expirations: @expirations})
     @.$('#option_chart').html(option_chart.render().el)

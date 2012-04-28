@@ -10,9 +10,9 @@ class Optionplus.Views.SearchFormView extends Backbone.View
     'change .config select':'updateSearch'
 
   render: ->
-    raw_strike_prices = @model.get('strike_prices')
-    strike_prices = if typeof(raw_strike_prices)=="undefined" then [] else raw_strike_prices
+    strike_prices = @model.get('strike_prices')
     $(@el).html(@template({model: @model, strike_prices: strike_prices, expirations: @expirations }))
+    $(@el).find('select[name="expiration"] option:nth-child(2)').attr('selected','selected')
     @
 
 
@@ -29,5 +29,4 @@ class Optionplus.Views.SearchFormView extends Backbone.View
     @model.fetch
       success: (model, response) =>
         @model.trigger('refreshForm')
-   console.log(@model)
 

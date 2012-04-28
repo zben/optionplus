@@ -82,6 +82,11 @@ $(document).keydown(function(e){
       }
        return false;
     }
+     else if (e.keyCode ==17 ){ //control
+       $('input#ticker').focus().select();
+       return false;
+    }
+
 
 
 

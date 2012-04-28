@@ -23,8 +23,13 @@ class Expiration
   end
 
   def trading_days_left
-    raw_days = (@date.to_date - Date.today)/60/60/24
-    (raw_days*5/7).floor + 1
+    raw_days = @date.to_date - Date.today
+    days = (raw_days*5/7).floor + 1
+    if days > 0 
+      "#{days} trading days until expiration" 
+    else
+      "#{-days} trading days past expiration"
+    end
   end
 
 end

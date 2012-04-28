@@ -1,27 +1,27 @@
- <h1>OptionPlus</h1>
   <form>
-    <label>Ticker</label> 
-    <input type="text_field" name="id" id="ticker" autocomplete="off" value=<%=@model.id%> />
+    <label class="form_label">Ticker</label> 
+    <input type="text_field" name="id" id="ticker" autocomplete="off" onClick="$('input#ticker').focus().select();" value=<%=@model.id%> />
 
     <div class="config">
 
-      <label>Call/Put</label>
-      <input type="radio" name="option_type" value="C" <%= "checked" if @model.get('option_type')=="C" %> > Call
-      <input type="radio" name="option_type" value="P" <%= "checked" if @model.get('option_type')=="P" %> > Put
-
-      <label>Strike Price</label>
+      <label class="form_label">Call/Put</label>
+<div id="bounds">
+      <label><input type="radio" name="option_type" value="C" <%= "checked" if @model.get('option_type')=="C" %> > <span>CALL</span></label>
+      <label><input type="radio" name="option_type" value="P" <%= "checked" if @model.get('option_type')=="P" %> > <span>PUT</span></label>
+</div>
+      <label class="form_label">Strike Price</label>
       <select type="select" name="strike"> 
         <% for strike in @strike_prices: %>
           <option value="<%=strike[0]%>" <%="selected" if strike[0]==@model.get('default_strike_price_string')%>> <%=strike[1]%> </option>
         <% end %>
       </select>
-      <label>Expiration Date</label>
+      <label class="form_label">Expiration Date</label>
       <select type="select" name="expiration">
         <% for expiration, index in @expirations.models: %>
           <option value="<%= expiration.get('url_fragment') %>" > <%= expiration.get('display') %></option>
         <% end %>
       </select>
-      <label>Display Period</label>
+      <label class="form_label">Display Period</label>
       <% for period in ['1d','2d','5d','10d','1m','3m','6m','1y']: %>
         <li class="period">
           <input type="radio" name="period" value="<%=period%>" 
